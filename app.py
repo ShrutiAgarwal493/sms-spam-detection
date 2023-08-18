@@ -10,7 +10,10 @@ from nltk.stem.porter import PorterStemmer
 ps = PorterStemmer()
 
 # Download NLTK data
-nltk.download('punkt')
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
 
 def transform_text(text):
     text = text.lower()
